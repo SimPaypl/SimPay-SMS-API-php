@@ -66,12 +66,6 @@ class SimPay
         }        
     }
     
-    
-    // v2 //
-    // status ostatnich sms
-    
-    // info o sms wyslanych przez uzytkownika
-    
     private function request($data, $url)
     {       
         $curl = curl_init();
@@ -95,41 +89,4 @@ class SimPay
     public function response() {
         return $this->response;
     }
-}
-
-function pre($array) {
-    echo '<pre>';
-    print_r($array);
-    echo '</pre>';
-}
-
-define('API_KEY',       '11111111');
-define('API_SECRET',    '22222222223333333333111111111100');
-
-try {
-
-    $api = new SimPay(API_KEY, API_SECRET, 3);
-    $api->getStatus(array(
-        'service_id'    => '21',       // identyfikator usługi premium sms
-        'number'        => '7355',     // numer na który wysłano sms
-        'code'          => '35FDEA',  // kod wprowadzony przez klienta
-    //  'test'          => '1',         // sprawia ze sprawdzane są poprzez api sms wygenerowane testowo
-    //  'show_used'     => '1'          // sprawia ze 1 kod mozna wykorzystac bezterminowo: 
-                                        // pamiętaj! wazność kodów w bazie SimPay wynosi 12 mc, po tym terminie kod zostaje deaktywowany automatycznie   
-    ));
-  
-   if($api->check()) {
-       echo 'Pozytywka';
-   } else if($api->error()) {
-       // Widok tylko w wersji deweloperskiej - do wyłączenia po zakończeniu testów
-       echo 'Wystapil blad:<br/>';
-       pre($api->showError());
-   } else {
-       print_r($api->showStatus());
-   }
-    
-} 
-
-catch(Exception $e) {
-    echo 'Error: ' .$e->getMessage();
 }
