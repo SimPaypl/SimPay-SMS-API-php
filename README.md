@@ -1,17 +1,35 @@
-# API_PHP
+# SimPay_PHP_API_Client
 Official SimPay.pl PHP API Client 
 
-Sample code
+## Requirements
+* PHP 5.3+
 
+## Installation
 
-	<?php
-	define('API_KEY', 'XXXXXXXX');
-	define('API_SECRET', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
-	define(‘API_VERSION’, 1);
+The SimPay_PHP_API_Client can be installed using [Composer](https://packagist.org/packages/simpay/api_client).
 
-	require_once(‘SimPay.class.php’);
+### Composer
 
-	try {
+Inside of `composer.json` specify the following:
+
+``` json
+{
+  "require": {
+    "simpay/api_client": "dev-master"
+  }
+}
+```
+
+``` php
+<?php
+// load Composer
+require 'vendor/autoload.php';
+
+define('API_KEY', 	'XXXXXXXX');
+define('API_SECRET', 	'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+define(‘API_VERSION’, 	1);
+
+try {
 	
 	$api = new SimPay(API_KEY, API_SECRET, API_VERSION);
         $api->getStatus(array(
@@ -20,7 +38,7 @@ Sample code
 				'code'		=>	'5DB554',						
 	));
 	
-	} catch(Exception $e) {
-		echo	'Error:	'	.$e->getMessage();
-	}
+} catch(Exception $e) {
+	echo	'Error:	'	.$e->getMessage();
+}
 	
