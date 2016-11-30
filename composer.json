@@ -13,5 +13,10 @@
             "email": "adrian.staniszewski@simpay.pl"
         }
     ],
+    "autoload": {
+        "psr-0": {
+          "Simpay": "src/"
+        }
+    },
     "minimum-stability": "stable"
 }
