@@ -31,7 +31,7 @@ define(‘API_VERSION’, 	1);
 
 try {
 	
-	$api = new SimPay(API_KEY, API_SECRET, API_VERSION);
+	$api = new Simpay(API_KEY, API_SECRET, API_VERSION);
         $api->getStatus(array(
 				'service_id' 	=>	'2',							
 				'number'	=>	'7355',
