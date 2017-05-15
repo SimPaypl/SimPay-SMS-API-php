@@ -3,7 +3,6 @@
     "description": "Official SimPay API Client",
     "type": "library",
     "require": {
-        "ext-curl": "^0.0.0",
         "php": "^5.3.3 || ^7.0"
     },
     "license": "free",
