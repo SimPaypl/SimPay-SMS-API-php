@@ -35,7 +35,7 @@ class SimPay
         return $this->response;
     }
 
-    public function getServies() 
+    public function getServices() 
     {
         $this->response = $this->url( 'get_services' );
         return $this->response;
