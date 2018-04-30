@@ -27,11 +27,10 @@ require 'vendor/autoload.php';
 
 define('API_KEY', 	'XXXXXXXX');
 define('API_SECRET', 	'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
-define(‘API_VERSION’, 	1);
 
 try {
 	
-	$api = new Simpay(API_KEY, API_SECRET, API_VERSION);
+	$api = new Simpay(API_KEY, API_SECRET );
         $api->getStatus(array(
 				'service_id' 	=>	'2',							
 				'number'	=>	'7355',

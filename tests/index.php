@@ -10,11 +10,10 @@
 
     define('API_KEY',       '11111111');
     define('API_SECRET',    '22222222223333333333111111111100');
-    define('API_VERSION',   '1');
 
     try {
 
-        $api = new SimPay(API_KEY, API_SECRET, API_VERSION);
+        $api = new SimPay(API_KEY, API_SECRET );
         $api->getStatus(array(
             'service_id'    => '21',        // identyfikator usl‚ugi premium sms
             'number'        => '7355',      // numer na ktory wyslano sms
