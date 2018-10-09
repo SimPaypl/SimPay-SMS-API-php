@@ -1,5 +1,5 @@
 {
-    "name": "simpay/api_client",
+    "name": "simpay/sms_client",
     "description": "Official SimPay API Client",
     "type": "library",
     "require": {
@@ -8,8 +8,8 @@
     "license": "free",
     "authors": [
         {
-            "name": "Adrian Staniszewski",
-            "email": "adrian.staniszewski@simpay.pl"
+            "name": "Rafał Więcek",
+            "email": "r.wiecek@simpay.pl"
         }
     ],
     "autoload": {
