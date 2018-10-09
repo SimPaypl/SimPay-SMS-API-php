@@ -6,7 +6,7 @@ Official SimPay.pl PHP API Client
 
 ## Installation
 
-The SimPay_PHP_SMS_Client can be installed using [Composer](https://packagist.org/packages/simpay/sms_client).
+The SimPay_PHP_SMS_Client can be installed using [Composer](https://packagist.org/packages/simpaypl/sms_client).
 
 ### Composer
 
@@ -15,7 +15,7 @@ Inside of `composer.json` specify the following:
 ``` json
 {
   "require": {
-    "simpay/sms_client": "dev-master"
+    "simpaypl/sms_client": "dev-master"
   }
 }
 ```
