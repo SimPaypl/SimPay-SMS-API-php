@@ -13,7 +13,7 @@
 
     try {
 
-        $api = new SimPay(API_KEY, API_SECRET );
+        $api = new SimPay( API_KEY, API_SECRET );
         $api->getStatus(array(
             'service_id'    => '21',        // identyfikator usl‚ugi premium sms
             'number'        => '7355',      // numer na ktory wyslano sms

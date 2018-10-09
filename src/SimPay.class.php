@@ -33,6 +33,35 @@ class SimPay
     public function getServices() 
     {
         $this->response = $this->url( 'get_services' );
+
+        return $this->response;
+    }
+
+    public function getServices() 
+    {
+        $this->response = $this->url( 'get_services' );
+        
+        return $this->response;
+    }
+
+    public function getServicesDB() 
+    {
+        $this->response = $this->url( 'get_services_db' );
+        
+        return $this->response;
+    }
+
+    public function getTransactionsSMS() 
+    {
+        $this->response = $this->url( 'transactions_sms' );
+        
+        return $this->response;
+    }
+
+    public function getTransactionsDB() 
+    {
+        $this->response = $this->url( 'transactions_db' );
+        
         return $this->response;
     }
     
@@ -67,27 +96,34 @@ class SimPay
         }        
     }
     
-    private function request($data, $url)
-    {       
+    private function request($data, $url){       
         $curl = curl_init();
+
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         curl_setopt($curl, CURLOPT_FAILONERROR, 1);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // developer only
+
         $call = curl_exec($curl);
         $response = json_decode($call, true);
         $error = curl_errno($curl);
+
         curl_close($curl);
         
         if ($error > 0) {
             throw new RuntimeException('CURL ERROR Code:'.$error);
         }
+        
         return $response;
     }
     
     public function response() {
+        return $this->response;
+    }
+
+    public function getResponse(){
         return $this->response;
     }
 }
