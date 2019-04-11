@@ -34,16 +34,22 @@ try {
 
     $api->getStatus(array(
 			'service_id' 	=>	'2',							
-			'number'	=>	'7355',
-			'code'		=>	'5DB554',						
+			'number'		=>	'7355',
+			'code'			=>	'5DB554',						
 	));
 
 	if( $api -> check() ){
 		echo 'Kod poprawny';
+
+		echo 'Numer telefonu z ktorego sms zostal wyslany ' . $api -> getSMSNumberFrom();
+
+		echo 'Wartosc SMSa ' . $api -> getSMSValue( '7355' );
 	}
 	else{
 		echo 'Kod nie poprawny';
 	}
+
+
 	
 } catch(Exception $e) {
 	echo	'Error:	'	.$e->getMessage();

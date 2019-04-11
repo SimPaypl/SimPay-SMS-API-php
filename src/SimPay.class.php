@@ -7,25 +7,25 @@ class SimPay
     protected $response = array();
     protected $call = array();
 
-    protected $smsValue = Array(
-        '7055' => '0.50',
-        '7136' => '1',
-        '7255' => '2',
-        '7355' => '3',
-        '7436' => '4',
-        '7536' => '5',
-        '7636' => '6',
-        '7736' => '7',
-        '7836' => '8',
-        '7936' => '9',
-        '91055' => '10',
-        '91155' => '11',
-        '91455' => '14',
-        '91664' => '16',
-        '91955' => '19',
-        '92055' => '20',
-        '92555' => '25'
-    );
+    protected $arrayCodes = array(
+		array( '7055' , 0.25 ),
+		array( '7136' , 0.5 ),
+		array( '7255' , 1 ),
+		array( '7355' , 1.5 ),
+		array( '7455' , 2 ),
+		array( '7555' , 2.5 ),
+		array( '7636' , 3 ),
+		array( '77464' , 3.5 ),
+		array( '78464' , 4 ),
+		array( '7936' , 4.5 ),
+		array( '91055' , 5 ),
+		array( '91155' , 5.5 ),
+		array( '91455' , 7 ),
+		array( '91664' , 8 ),
+		array( '91955' , 9.5 ),
+		array( '92055' , 10 ),
+		array( '92555' , 12.5 ),
+	);
     
     public function __construct($key = '', $secret = '' ){
         
@@ -103,12 +103,14 @@ class SimPay
         }
     }
 
-    public function getSMSNumberValue( $number ){
-        if( !isset( $this -> smsValue[ $number ] ) ){
-            return 0;
+    private function getSMSValue( $number ){
+		for( $iPosition = 0; $iPosition < count( $this -> arrayCodes ); $iPosition++ ){
+			if( $this -> arrayCodes[ $iPosition ][ 0 ] == $number ){
+				return $this -> arrayCodes[ $iPosition ][ 1 ];
+			}
         }
 
-        return $this -> smsValue[ $number ];
+        return 0;
     }
     
     public function error() 
