@@ -31,11 +31,19 @@ define('API_SECRET', 	'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
 try {
 	
 	$api = new Simpay(API_KEY, API_SECRET );
-        $api->getStatus(array(
-				'service_id' 	=>	'2',							
-				'number'	=>	'7355',
-				'code'		=>	'5DB554',						
+
+    $api->getStatus(array(
+			'service_id' 	=>	'2',							
+			'number'	=>	'7355',
+			'code'		=>	'5DB554',						
 	));
+
+	if( $api -> check() ){
+		echo 'Kod poprawny';
+	}
+	else{
+		echo 'Kod nie poprawny';
+	}
 	
 } catch(Exception $e) {
 	echo	'Error:	'	.$e->getMessage();

@@ -6,6 +6,26 @@ class SimPay
     
     protected $response = array();
     protected $call = array();
+
+    protected $smsValue = Array(
+        '7055' => '0.50',
+        '7136' => '1',
+        '7255' => '2',
+        '7355' => '3',
+        '7436' => '4',
+        '7536' => '5',
+        '7636' => '6',
+        '7736' => '7',
+        '7836' => '8',
+        '7936' => '9',
+        '91055' => '10',
+        '91155' => '11',
+        '91455' => '14',
+        '91664' => '16',
+        '91955' => '19',
+        '92055' => '20',
+        '92555' => '25'
+    );
     
     public function __construct($key = '', $secret = '' ){
         
@@ -81,6 +101,14 @@ class SimPay
         } else {
             throw new Exception('Brak informacji na temat ostatniego zapytania');
         }
+    }
+
+    public function getSMSNumberValue( $number ){
+        if( !isset( $this -> smsValue[ $number ] ) ){
+            return 0;
+        }
+
+        return $this -> smsValue[ $number ];
     }
     
     public function error() 
