@@ -70,6 +70,18 @@ class SimPay
             throw new Exception('Brak informacji na temat ostatniego zapytania');
         }
     }
+
+    public function getSMSNumberFrom(){
+        if(isset($this->response) and is_array($this->response)) {
+            if(isset($this->response['respond']['from']) ) {
+                return $this->response['respond']['from'];                
+            } else if(isset($this->response['error']) and is_array($this->response['error'])) {
+                return '';
+            } 
+        } else {
+            throw new Exception('Brak informacji na temat ostatniego zapytania');
+        }
+    }
     
     public function error() 
     {
