@@ -32,7 +32,7 @@ try {
 	
 	$api = new Simpay(API_KEY, API_SECRET );
 
-    $api->getStatus(array(
+    	$api->getStatus(array(
 			'service_id' 	=>	'2',							
 			'number'		=>	'7355',
 			'code'			=>	'5DB554',						
