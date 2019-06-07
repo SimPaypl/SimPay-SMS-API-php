@@ -24,8 +24,20 @@ class SimPay
 		array( '91664' , 8 ),
 		array( '91955' , 9.5 ),
 		array( '92055' , 10 ),
-		array( '92555' , 12.5 ),
-	);
+        array( '92555' , 12.5 ),
+    );
+
+    protected $arrayCodesAdult = array(
+        array( '70908' , 0.25 ),
+        array( '71908' , 0.5 ),
+        array( '72998' , 1 ),
+        array( '73908' , 1.5 ),
+        array( '75908' , 2.5 ),
+        array( '76908' , 3 ),
+        array( '79908' , 4.5 ),
+        array( '91998' , 9.5 ),
+        array( '92598' , 12.5 ),
+    );
     
     public function __construct($key = '', $secret = '' ){
         
@@ -77,6 +89,13 @@ class SimPay
         
         return $this->response;
     }
+
+    public function getIP()
+    {
+        $this->response = $this->url( 'get_ip' );
+        
+        return $this->response;
+    }
     
     public function check() 
     {
@@ -107,6 +126,12 @@ class SimPay
 		for( $iPosition = 0; $iPosition < count( $this -> arrayCodes ); $iPosition++ ){
 			if( $this -> arrayCodes[ $iPosition ][ 0 ] == $number ){
 				return $this -> arrayCodes[ $iPosition ][ 1 ];
+			}
+        }
+
+        for( $iPosition = 0; $iPosition < count( $this -> arrayCodesAdult ); $iPosition++ ){
+			if( $this -> arrayCodesAdult[ $iPosition ][ 0 ] == $number ){
+				return $this -> arrayCodesAdult[ $iPosition ][ 1 ];
 			}
         }
 
