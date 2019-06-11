@@ -1,7 +1,6 @@
 <?php
 
-class SimPay
-{
+class SimPay {
     protected $auth = array();
     
     protected $response = array();
@@ -39,7 +38,7 @@ class SimPay
         array( '92598' , 12.5 ),
     );
     
-    public function __construct($key = '', $secret = '' ){
+    public function __construct($key = '', $secret = '' ) {
         
         $this->auth = array(
             "auth" => array(
@@ -49,56 +48,48 @@ class SimPay
         );
     }
     
-    public function url($value, $params = array())
-    {
+    public function url($value, $params = array()) {
         $data = json_encode(array('params'=>array_merge($this->auth, $params)));
-        $this->call = $this->request($data, "https://simpay.pl/api/".$value);
+        $this->call = $this->request($data, "https://simpay.pl/api/" . $value);
         return $this->call;
     }
     
-    public function getStatus($params) 
-    {
+    public function getStatus($params) {
         $this->response = $this->url('status', $params);
         return $this->response;
     }
 
-    public function getServices() 
-    {
+    public function getServices() {
         $this->response = $this->url( 'get_services' );
 
         return $this->response;
     }
 
-    public function getServicesDB() 
-    {
+    public function getServicesDB() {
         $this->response = $this->url( 'get_services_db' );
         
         return $this->response;
     }
 
-    public function getTransactionsSMS() 
-    {
+    public function getTransactionsSMS() {
         $this->response = $this->url( 'transactions_sms' );
         
         return $this->response;
     }
 
-    public function getTransactionsDB() 
-    {
+    public function getTransactionsDB() {
         $this->response = $this->url( 'transactions_db' );
         
         return $this->response;
     }
 
-    public function getIP()
-    {
+    public function getIP() {
         $this->response = $this->url( 'get_ip' );
         
         return $this->response;
     }
     
-    public function check() 
-    {
+    public function check() {
         if(isset($this->response) and is_array($this->response)) {
             if(isset($this->response['respond']['status']) and $this->response['respond']['status']=='OK') {
                 return true;                
@@ -110,7 +101,7 @@ class SimPay
         }
     }
 
-    public function getSMSNumberFrom(){
+    public function getSMSNumberFrom() {
         if(isset($this->response) and is_array($this->response)) {
             if(isset($this->response['respond']['from']) ) {
                 return $this->response['respond']['from'];                
@@ -122,7 +113,7 @@ class SimPay
         }
     }
 
-    private function getSMSValue( $number ){
+    private function getSMSValue($number) {
 		for( $iPosition = 0; $iPosition < count( $this -> arrayCodes ); $iPosition++ ){
 			if( $this -> arrayCodes[ $iPosition ][ 0 ] == $number ){
 				return $this -> arrayCodes[ $iPosition ][ 1 ];
@@ -138,8 +129,7 @@ class SimPay
         return 0;
     }
     
-    public function error() 
-    {
+    public function error() {
         if(isset($this->response['error']) and is_array($this->response['error'])) {
             return true;
         } else {
@@ -147,8 +137,7 @@ class SimPay
         }
     }
     
-    public function showError() 
-    {
+    public function showError() {
         if(isset($this->response['error']) and is_array($this->response['error'])) {
             return $this->response['error'];
         } else {
@@ -156,7 +145,7 @@ class SimPay
         }        
     }
     
-    private function request($data, $url){       
+    private function request($data, $url) {       
         $curl = curl_init();
 
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -183,7 +172,7 @@ class SimPay
         return $this->response;
     }
 
-    public function getResponse(){
+    public function getResponse() {
         return $this->response;
     }
 }
