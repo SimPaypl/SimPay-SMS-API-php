@@ -55,7 +55,7 @@ class SimPay {
     }
     
     public function getStatus($params) {
-        $this->response = $this->url('status', $params);
+        $this->response = $this->url( 'status', $params );
         return $this->response;
     }
 
@@ -136,7 +136,7 @@ class SimPay {
             return false;
         }
     }
-    
+
     public function showError() {
         if(isset($this->response['error']) and is_array($this->response['error'])) {
             return $this->response['error'];
