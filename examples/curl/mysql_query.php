@@ -61,7 +61,7 @@ if (!is_object($response)) {
 
 if ($response->respond->status == "OK") {
 	
-	mysql_query("INSERT INTO INSERT INTO `sms` (`service_id`, `number`, `code, `user`) VALUES ('" . mysql_real_escape_string($cfg['service_id']) . "', '" . mysql_real_escape_string($cfg['number']) . "', '" . mysql_real_escape_string($cfg['code']) . "', 'new');", $mysql);
+	mysql_query("INSERT INTO `sms` (`service_id`, `number`, `code, `user`) VALUES ('" . mysql_real_escape_string($cfg['service_id']) . "', '" . mysql_real_escape_string($cfg['number']) . "', '" . mysql_real_escape_string($cfg['code']) . "', 'new');", $mysql);
 	
 	exit('Podany kod jest prawidłowy!');
 	
