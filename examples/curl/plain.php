@@ -1,11 +1,5 @@
 <?php
 $cfg = array(
-	'mysql' => array(
-		'host' => 'localhost',
-		'user' => 'username',
-		'pass' => 'password',
-		'base' => 'database'
-	),
 	'simpay' => array(
 		'auth' => array(
 			/*
@@ -31,14 +25,9 @@ $cfg = array(
 		/*
 		*	Kod SMS zwrotny, powinien zawierać 6 znaków
 		*/
-		'code' => 'D4799A'
+		'code' => '58E1Y1'
 	)
 );
-
-$mysql = mysql_connect($cfg['mysql']['host'], $cfg['mysql']['username'], $cfg['mysql']['password'], $cfg['password']['database']);
-if (!$mysql) {
-    exit('Connection error: ' . mysql_error());
-}
 	
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, "https://simpay.pl/api/status");
@@ -61,7 +50,9 @@ if (!is_object($response)) {
 
 if ($response->respond->status == "OK") {
 	
-	mysql_query("INSERT INTO `sms` (`service_id`, `number`, `code, `user`) VALUES ('" . mysql_real_escape_string($cfg['service_id']) . "', '" . mysql_real_escape_string($cfg['number']) . "', '" . mysql_real_escape_string($cfg['code']) . "', 'new');", $mysql);
+	/*
+	*	Kod prawidłowy, można tutaj stworzyć np. rekord do bazy z informacjami o zakupie.
+	*/
 	
 	exit('Podany kod jest prawidłowy!');
 	
