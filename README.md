@@ -10,6 +10,10 @@ The SimPay_PHP_SMS_Client can be installed using [Composer](https://packagist.or
 
 ### Composer
 
+#### Automatic install
+```composer require simpaypl/sms_client```
+
+#### Manual install
 Inside of `composer.json` specify the following:
 
 ``` json
