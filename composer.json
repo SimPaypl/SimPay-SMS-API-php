@@ -2,6 +2,7 @@
     "name": "simpaypl/sms_client",
     "description": "Official SimPay API Client",
     "type": "library",
+    "version": "1.0",
     "require": {
         "php": "^5.3.3 || ^7.0"
     },
