@@ -1,4 +1,6 @@
-# SimPay_SMS_API_Client
+## :warning: Zalecamy używanie [nowej biblioteki](https://github.com/SimPaypl/SimPay-API-php)
+
+## SimPay_SMS_API_Client
 Official SimPay.pl PHP API Client 
 
 ## Requirements
